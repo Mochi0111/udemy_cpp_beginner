@@ -3,9 +3,7 @@ using namespace std;
 
 class Animal{
     public:
-        virtual void speak(){
-            cout << "鳴き声を出してください\n";
-        };
+        virtual void speak() = 0;
 };
 
 class Dog : public Animal{
@@ -18,14 +16,19 @@ class Dog : public Animal{
 class Cat : public Animal{
     public:
         void speak(){
-            cout << "ニャンニャン\n";
+            cout << "にゃんにゃん\n";
         };
 };
 
-int main (){
+int main(){
+    int i;
+    Animal *p[2];
     Dog inu;
     Cat neko;
-    inu.speak();
-    neko.speak();
+    p[0] = &inu;
+    p[1] = &neko;
+    for(i = 0; i < 2; i++){
+        (*p[i]).speak();
+    }
     return 0;
 }
